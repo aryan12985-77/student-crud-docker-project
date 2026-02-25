@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student CRUD App</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h2>Student Management System</h2>
+
+<!-- Add Student Form -->
+<form action="/add" method="POST">
+    <input type="text" name="name" placeholder="Enter Name" required>
+    <input type="email" name="email" placeholder="Enter Email" required>
+    <input type="text" name="course" placeholder="Enter Course" required>
+    <button type="submit">Add Student</button>
+</form>
+
+<br>
+
+<!-- Students Table -->
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Course</th>
+        <th>Action</th>
+    </tr>
+
+    {% for student in students %}
+    <tr>
+        <form action="/update/{{ student[0] }}" method="POST">
+            <td>{{ student[0] }}</td>
+            <td><input type="text" name="name" value="{{ student[1] }}"></td>
+            <td><input type="email" name="email" value="{{ student[2] }}"></td>
+            <td><input type="text" name="course" value="{{ student[3] }}"></td>
+            <td>
+                <button type="submit">Update</button>
+                <a href="/delete/{{ student[0] }}">Delete</a>
+            </td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

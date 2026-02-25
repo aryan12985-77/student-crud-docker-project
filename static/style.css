@@ -1,0 +1,18 @@
+body {
+    font-family: Arial;
+    text-align: center;
+}
+
+form input {
+    padding: 8px;
+    margin: 5px;
+}
+
+button {
+    padding: 8px;
+}
+
+table {
+    margin: auto;
+    margin-top: 20px;
+}
