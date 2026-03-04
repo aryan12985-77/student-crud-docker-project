@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>Admin Dashboard</h2>
+
+<div>
+Welcome Admin {{ name }} |
+<a href="/logout" class="logout">Logout</a>
+</div>
+
+</div>
+
+
+<div class="container">
+
+<h3>Application Statistics</h3>
+
+<ul class="stats">
+
+<li>Total Applications: {{ total }}</li>
+<li>Pending: {{ pending }}</li>
+<li>Approved: {{ approved }}</li>
+<li>Rejected: {{ rejected }}</li>
+
+</ul>
+
+
+<h3>All Applications</h3>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Student Name</th>
+<th>Course</th>
+<th>Statement</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for app in applications %}
+
+<tr>
+
+<td>{{ app.id }}</td>
+<td>{{ app.student_name }}</td>
+<td>{{ app.course }}</td>
+<td>{{ app.statement }}</td>
+
+<td class="{{ app.status }}">
+{{ app.status }}
+</td>
+
+<td>
+
+<a href="/update_status/{{ app.id }}/Approved">Approve</a> |
+<a href="/update_status/{{ app.id }}/Rejected">Reject</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+</html>

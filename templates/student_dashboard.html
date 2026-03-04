@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Welcome {{ name }}</h1>
+
+<a href="/logout">Logout</a>
+
+<h2>Your Applications</h2>
+
+{% if applications %}
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Course</th>
+        <th>Statement</th>
+        <th>Status</th>
+    </tr>
+
+    {% for app in applications %}
+    <tr>
+        <td>{{ app.id }}</td>
+        <td>{{ app.course }}</td>
+        <td>{{ app.statement }}</td>
+        <td>{{ app.status }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% else %}
+
+<p>No applications submitted yet.</p>
+
+{% endif %}
+
+<h2>Apply for Admission</h2>
+
+<form action="/apply" method="POST">
+
+<label>Course:</label>
+<input type="text" name="course" required>
+
+<br><br>
+
+<label>Statement:</label>
+<textarea name="statement" required></textarea>
+
+<br><br>
+
+<button type="submit">Submit Application</button>
+
+</form>
+
+</body>
+</html>
